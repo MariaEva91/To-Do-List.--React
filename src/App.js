@@ -11,7 +11,7 @@ class App extends Component {
       tasks: [
         {
           id: 1,
-          text: 'Lavar la ropa',
+          text: 'Pagar la luz',
           done: false
         }
       ]
@@ -35,12 +35,9 @@ class App extends Component {
     text:this.state.newTask,
     done: false
   }
-  //guardo la info que ya tenia en la lista, pusheo y la actualizo
+   let loQueYaTeniaEnTask = this.state.tasks;
+   loQueYaTeniaEnTask.push(newTask)
 
-    let loQueYaTeniaEnTask = this.state.tasks;
-    loQueYaTeniaEnTask.push(newTask)
-
-  // modifico el estado
   this.setState({
     tasks: loQueYaTeniaEnTask
    })
@@ -60,18 +57,12 @@ class App extends Component {
     })
   }
 //function to edit---------------------------------------
-//necesito el id
-//busco la tarea
-//tengo que pasar la propiedad done a true
-//set state
+
   toggleDone(id){
     const myTasks = this.state.tasks;
     for(var i = 0; i< myTasks.length;i++){
       if(myTasks[i].id === id){
-        //pasa la propiedad done a true
         myTasks[i].done = !myTasks[i].done;
-        
-        console.log(myTasks[i].done)
       }
     }
     this.setState({
@@ -79,7 +70,6 @@ class App extends Component {
     })
   }
   
-
   render() {
  const lis = this.state.tasks.map(t => {
       let colorTareaHecha = '';
